@@ -1,0 +1,96 @@
+<html>
+<head>
+<style>
+div {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.button {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.button2 {
+  background-color: #ffffff;
+  border: none;
+  color: grey;
+  padding: 1px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+</style>
+</head>
+<script>
+function makeidv(length) {
+   var result           = '';
+   var characters       = 'EAIUO';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+function makeidc(length) {
+   var result           = '';
+   var characters       = 'SNTRLDCPMVGF';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+function makeidcv(length) {
+   var result           = '';
+   var characters       = 'EAIUO';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+var snd = new Audio("1.mp3"); 
+
+var s = makeidc(1);
+var n = makeidcv(1);
+var x = makeidc(1);
+var m = makeidcv(1);
+var t = makeidc(1);
+var q = makeidc(1);
+var y = makeidv(1);
+var p = makeidc(1);
+var a = makeidc(1);
+console.log(makeidc(1));
+console.log(makeidv(1));
+console.log(makeidv(1));
+console.log(makeidv(1));
+console.log(makeidv(1));
+console.log(makeidv(1));
+console.log(makeidcv(1));
+
+document.write('<div>');
+
+document.write(s.fixed().fontsize(12).fontcolor("#890385") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + n.fixed().fontsize(12).fontcolor("#ffb900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + x.fixed().fontsize(12).fontcolor("#0104d2") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + m.fixed().fontsize(12).fontcolor("#01b9d2") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + t.fixed().fontsize(12).fontcolor("#c2629c") 
++ '<br>' + n.fixed().fontsize(12).fontcolor("#ffb900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + q.fixed().fontsize(12).fontcolor("#1a6a5a") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + y.fixed().fontsize(12).fontcolor("#00b900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + p.fixed().fontsize(12).fontcolor("#a59908") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + m.fixed().fontsize(12).fontcolor("#01b9d2") 
++ '<br>' + x.fixed().fontsize(12).fontcolor("#0104d2") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + y.fixed().fontsize(12).fontcolor("#00b900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + a.fixed().fontsize(12).fontcolor("#d02500") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + y.fixed().fontsize(12).fontcolor("#00b900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + x.fixed().fontsize(12).fontcolor("#0104d2") 
++ '<br>' + m.fixed().fontsize(12).fontcolor("#01b9d2") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + p.fixed().fontsize(12).fontcolor("#a59908") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + y.fixed().fontsize(12).fontcolor("#00b900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + q.fixed().fontsize(12).fontcolor("#1a6a5a") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + n.fixed().fontsize(12).fontcolor("#ffb900") 
++ '<br>' + t.fixed().fontsize(12).fontcolor("#c2629c") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + m.fixed().fontsize(12).fontcolor("#01b9d2") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + x.fixed().fontsize(12).fontcolor("#0104d2") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + n.fixed().fontsize(12).fontcolor("#ffb900") + '&nbsp&nbsp&nbsp&nbsp&nbsp' + s.fixed().fontsize(12).fontcolor("#890385"));
+
+document.write('<div>');
+document.write('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><button class="button" value="Refresh Page" onClick="window.location.reload();">N</button>')
+document.write('</div>');
+document.write('</div>');
+document.write('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><button class="button2" onClick="snd.play();">woah</button>')
+</script>
+</html>
