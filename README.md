@@ -1,0 +1,2 @@
+# SATOR
+Magic squares
