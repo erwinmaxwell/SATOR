@@ -31,8 +31,32 @@ div {
   display: inline-block;
   font-size: 16px;
 }
+h1 {
+text-align: center;
+font-family: monospace;
+color: #008000;
+}
+.bra {
+line-height: 0.01;
+}
+.brb {
+line-height: 0.4
+}
+p {
+line-height: 0.5;
+text-align: center;
+font-family: "Gill sans", sans-serif;
+font-style: oblique;
+color: #7575a3;
+}
 </style>
 </head>
+<body>
+<br class="brb">
+<h1>SATOR</h1>
+<br class="bra">
+<p>inspired by a <a href="https://en.wikipedia.org/wiki/Sator_Square">five word latin palindrome</a></p>
+<p>the generated squares can be read in multiple ways</p>
 <script>
 function makeidv(length) {
    var result           = '';
@@ -95,4 +119,5 @@ document.write('</div>');
 document.write('</div>');
 document.write('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><button class="button2" onClick="snd.play();">woah</button>')
 </script>
+</body>
 </html>
