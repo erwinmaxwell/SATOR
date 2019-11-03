@@ -59,8 +59,23 @@ color: #7575a3;
 <p>the generated squares can be read in multiple ways</p>
 <script>
 function quiestleplusbg(nom1,nom2) {
-   var leplusbg= 'gaspard';
-   return leplusbg;
+  var leplusbg= '';
+  if (nom1 == 'gaspard') {
+  leplusbg += nom1;
+} else if(nom2 == 'gaspard') {
+  leplusbg += 'tu crois il est à qui ce site?';
+} else if(nom2 == 'matthieu') {
+  leplusbg += 'celui qui kiffe le plus vald';
+} else if(nom2 == 'antoine') {
+  leplusbg += 'erispoe, pour sur';
+} else if(nom1 == 'antoine') {
+  leplusbg += 'cedrichon';
+} else if(nom1 == 'matthieu') {
+  leplusbg += 'mattyboi';
+} else {
+  leplusbg += 'personnelol';
+}
+  return leplusbg;
 }
 function makeidv(length) {
    var result           = '';
