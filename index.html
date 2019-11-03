@@ -58,6 +58,14 @@ color: #7575a3;
 <p>inspired by a <a href="https://en.wikipedia.org/wiki/Sator_Square">five word latin palindrome</a></p>
 <p>the generated squares can be read in multiple ways</p>
 <script>
+function undosattencion() {
+   var result = 'un dos tres quatro, la Pantera'
+   snd2.play();
+}
+function tudansesalespagnole() {
+   var result = 'mets toi bien ami'
+   snd3.play();
+}
 function quiestleplusbg(nom1,nom2) {
   var leplusbg= '';
   if (nom1 == 'gaspard') {
@@ -106,6 +114,8 @@ function makeidcv(length) {
 }
 
 var snd = new Audio("1.mp3"); 
+var snd2 = new Audio ("Pantera.mp3");
+var snd3 = new Audio ("TDALE.mp3");
 
 var s = makeidc(1);
 var n = makeidcv(1);
