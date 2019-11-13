@@ -58,6 +58,19 @@ color: #7575a3;
 <p>inspired by a <a href="https://en.wikipedia.org/wiki/Sator_Square" target="_blank">five word latin palindrome</a></p>
 <p>the generated squares can be read in multiple ways</p>
 <script>
+function fib(niveau) {
+   var fib = 0
+   var fiba = 1
+   var fibb =1
+   var numop = 0
+   while (numop < niveau){
+      var numop = numop+1
+      var fib = fibb + fiba
+      var fiba = fibb
+      var fibb = fib
+   }
+return fibb
+}
 function undosattencion() {
    var result = 'un dos tres quatro, la Pantera'
    snd2.play();
