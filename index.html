@@ -71,8 +71,9 @@ function fib(niveau) {
    }
 return fibb
 }
-function undosattencion() {
+function undosattencion(vitesse) {
    var result = 'un dos tres quatro, la Pantera'
+   snd2.playbackRate = vitesse;
    snd2.play();
    return result;
 }
