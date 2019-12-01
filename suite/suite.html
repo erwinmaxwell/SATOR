@@ -2,9 +2,44 @@
 <html>
 <head>
 <title>Page +</title>
+<style>
+	.valeur {
+		font-family: "Gill Sans", sans-serif;
+		font-size: 30px;
+		color: #2a6e14;
+	}
+</style>
 </head>
 <body>
-  <p>Salut</p>
+<script>
+function fib(niveau) {
+   var fib = 0
+   var fiba = 1
+   var fibb =1
+   var numop = 0
+   while (numop < niveau){
+      var numop = numop+1
+      var fib = fibb + fiba
+      var fiba = fibb
+      var fibb = fib
+   }
+return fibb
+}
+function wri() {
+	if (fibin.value < 1475) {
+		document.getElementById("valeur").innerHTML = fib(fibin.value);
+	}
+	else {
+		document.getElementById("valeur").innerHTML = "Can we get much higher <a target='blank' href='https://www.youtube.com/watch?v=Jg5wkZ-dJXA'>?</a>";
+	}
+}
+</script>
+<h1>Fibonacci</h1>
+<label for="fibin">Niveau (<1475) : </label>
+
+<input type="number" id="fibin" name="fibin" onkeydown="wri()">
+  <p class='valeur' id='valeur'></p>
+  <br><br>
   <a href='https://copychar.cc/'>Tu veux des caractères spéciaux?</a>
 </body>
 </html>
