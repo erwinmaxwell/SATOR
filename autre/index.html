@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<style>
+</style>
+<script>
+function shuffle(deck)
+{
+	// for 1000 turns
+	// switch the values of two random cards
+	for (var i = 0; i < 1000; i++)
+	{
+		var location1 = Math.floor((Math.random() * deck.length));
+		var location2 = Math.floor((Math.random() * deck.length));
+		var tmp = deck[location1];
+
+		deck[location1] = deck[location2];
+		deck[location2] = tmp;
+	}
+}
+var quartier = {Temple:{cout:"1",classe:"rel",numa:"3"}, Eglise:{cout:"2",classe:"rel",numa:"4"}, Monastere:{cout:"3",classe:"rel",numa:"3"}, Cathedrale:{cout:"5",classe:"rel",numa:"2"}, Tour_de_guet:{cout:"1",classe:"mil",numa:"3"}, Prison:{cout:"2",classe:"mil",numa:"3"}, Caserne:{cout:"3",classe:"mil",numa:"3"}, Forteresse:{cout:"5",classe:"mil",numa:"2"}, Taverne:{cout:"1",classe:"com",numa:"5"}, Echoppe:{cout:"2",classe:"com",numa:"3"}, Marche:{cout:"2",classe:"com",numa:"4"}, Comptoir:{cout:"3",classe:"com",numa:"3"}, Port:{cout:"4",classe:"com",numa:"3"}, Hotel_de_ville:{cout:"5",classe:"com",numa:"2"}, Manoir:{cout:"3",classe:"nob",numa:"5"}, Chateau:{cout:"4",classe:"nob",numa:"4"}, Palais:{cout:"5",classe:"nob",numa:"2"}, Cour_des_miracles:{cout:"2",classe:"merv",numa:"1"}, Donjon:{cout:"3",classe:"merv",numa:"1"}, Laboratoire:{cout:"5",classe:"merv",numa:"1"}, Manufacture:{cout:"5",classe:"merv",numa:"1"}, Ecole_de_magie:{cout:"6",classe:"merv",numa:"1"}, Universite:{cout:"6",classe:"merv",numa:"1"}, Dracoport:{cout:"6",classe:"merv",numa:"1"}, Cimetiere:{cout:"5",classe:"merv",numa:"1"}, Observatoire:{cout:"5",classe:"merv",numa:"1"}, Bibliotheque:{cout:"6",classe:"merv",numa:"1"}};
+var persos = ["Assassin", "Voleur", "Magicien", "Roi", "Eveque", "Marchand", "Architecte", "Condottiere"];
+shuffle(persos)
+document.write("<h3>Ton rôle : </h3>")
+document.write("Tu es "+persos[0]+" !<br>")
+document.write("<br><h3>Deck de quartiers : </h3>")
+var lirel = []
+var licom = []
+var limil = []
+var linob = []
+var limerv = []
+for (const i in quartier){
+	if (quartier[i].classe==="rel"){
+		var numa = parseInt(quartier[i].numa);
+		var atn = 0;
+		while (atn<numa+1){
+			atn=atn+1;
+			lirel.push(i);
+		};
+	}else if (quartier[i].classe==="com"){
+		var numa = parseInt(quartier[i].numa);
+		var atn = 0;
+		while (atn<numa+1){
+			atn=atn+1;
+			licom.push(i);
+		};
+	}else if (quartier[i].classe==="mil"){
+		var numa = parseInt(quartier[i].numa);
+		var atn = 0;
+		while (atn<numa+1){
+			atn=atn+1;
+			limil.push(i);
+		};
+	}else if (quartier[i].classe==="nob"){
+		var numa = parseInt(quartier[i].numa);
+		var atn = 0;
+		while (atn<numa+1){
+			atn=atn+1;
+			linob.push(i);
+		};
+	}else if (quartier[i].classe==="merv"){
+		var numa = parseInt(quartier[i].numa);
+		var atn = 0;
+		while (atn<numa+1){
+			atn=atn+1;
+			limerv.push(i);
+		};
+	};
+}
+var litot = lirel.concat(licom,limil,linob,limerv)
+shuffle(litot)
+console.log(litot)
+for (const i in litot){
+	var it = String(litot[i]);
+	var typet = quartier[litot[i]].classe;
+	var typett=[];
+	if (typet==="rel"){typett.push("Religieux");}else if (typet==="com"){typett.push("Commercial");}else if (typet==="mil"){typett.push("Militaire");}else if (typet==="nob"){typett.push("Noble");}else if (typet==="merv"){typett.push("Merveille");};
+	var coutt = quartier[litot[i]].cout;
+	console.log(it);
+	document.write("<b>"+it+"</b>"+", quartier de type <i>"+typett[0]+"</i>, coût : "+coutt+" pièces.<br>");
+}
+
+</script>
+<html>
+<head>
+	<title>Citadelle de base</title>
+</head>
+<body>
+	<div id="idd"></div>
+</body>
+</html>
