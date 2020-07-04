@@ -26,7 +26,6 @@ if langsub=="no":
 	subprocess.call(command, shell=True)
 auth=requests.post("https://www.opensubtitles.com/api/v1/login", data={"username":"helloapi","password":"g1231230"})
 tokensub=auth.json()["token"]
-print(tokensub)
 titlel=list(title)
 titlefl=[]
 for i in titlel:
