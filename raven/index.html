@@ -1,34 +1,32 @@
 <html>
 <head>
     <title>RAVEN</title>
-    <meta name="viewport" content="height=device-height">
-    <script src="imageMapResizer.min.js"></script>
+    <link rel="icon" href="favicon.ico">
     <script>
       d={"A1":4,"A2":5,"A3":1,"A4":2,"A5":6,"A6":3,"A7":6,"A8":2,"A9":1,"A10":3,"A11":4,"A12":5,
          "B1":2,"B2":6,"B3":1,"B4":2,"B5":1,"B6":3,"B7":5,"B8":6,"B9":4,"B10":3,"B11":4,"B12":5,
-         "C1":4,"C2":5,"C3":1,"C4":2,"C5":6,"C6":3,"C7":6,"C8":2,"C9":1,"C10":3,"C11":4,"C12":5,
-         "D1":4,"D2":5,"D3":1,"D4":2,"D5":6,"D6":3,"D7":6,"D8":2,"D9":1,"D10":3,"D11":4,"D12":5,
-         "E1":4,"E2":5,"E3":1,"E4":2,"E5":6,"E6":3,"E7":6,"E8":2,"E9":1,"E10":3,"E11":4,"E12":5}
+         "C1":8,"C2":2,"C3":3,"C4":8,"C5":7,"C6":4,"C7":5,"C8":1,"C9":7,"C10":6,"C11":1,"C12":2,
+         "D1":3,"D2":4,"D3":3,"D4":7,"D5":8,"D6":6,"D7":5,"D8":4,"D9":1,"D10":2,"D11":5,"D12":6,
+         "E1":7,"E2":6,"E3":8,"E4":2,"E5":1,"E6":5,"E7":1,"E8":6,"E9":3,"E10":2,"E11":4,"E12":5}
       current_matrix="A1"
       score=0
       index=0
-      function check(m,r) {if (d[m]==r){score+=1;next_matrix()} else {next_matrix()};}
-      function next_matrix() {if (current_matrix=="B12") {alert("Finished ! Score : "+score)} else {index+=1;document.getElementById("matrix").src="img/"+Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]}}
+      times=[]
+      function initiate() {document.getElementById("container").innerHTML="<img id='matrix' src='img/A1.jpg' height=100% alt='A Raven matrix'><a onclick='check(current_matrix,2);' title='2' style='position: absolute; left: 37.38%; top: 53%; width: 27.15%; height: 16.82%; z-index: 2;'></a><a onclick='check(current_matrix,1);' title='1' style='position: absolute; left: 8.66%; top: 53.47%; width: 25.97%; height: 16.29%; z-index: 1;'></a><a onclick='check(current_matrix,3);' title='3' style='position: absolute; left: 67.67%; top: 52.71%; width: 26.75%; height: 17.76%; z-index: 2;'></a><a onclick='check(current_matrix,6);' title='6' style='position: absolute; left: 67.74%; top: 71.18%; width: 26.56%; height: 16.35%; z-index: 2;'></a><a onclick='check(current_matrix,5);' title='5' style='position: absolute; left: 37.18%; top: 70.76%; width: 28.2%; height: 16.59%; z-index: 2;'></a><a onclick='check(current_matrix,4);' title='4' style='position: absolute; left: 8.59%; top: 70.88%; width: 25.97%; height: 16.29%; z-index: 2;'></a>";start=Date.now();}
+      function check(m,r) {times.push(Date.now()-start);console.log(m+" | "+r);if (d[m]==r){console.log("Correct !");score+=1;next_matrix()} else {next_matrix()};}
+      function next_matrix() {start=Date.now();
+        if (current_matrix=="E12") {conclude();} 
+        else if (current_matrix=='B12') {document.getElementById("container").innerHTML="<img id='matrix' src='img/C1.jpg' height=100% alt='A Raven matrix'><a onclick='check(current_matrix,2);' title='2' style='position: absolute; left: 28.2%; top: 55.24%; width: 21.84%; height: 15.24%; z-index: 2;'></a><a onclick='check(current_matrix,1);' title='1' style='position: absolute; left: 6.75%; top: 55.12%; width: 20.39%; height: 15.59%; z-index: 1;'></a><a onclick='check(current_matrix,3);' title='3' style='position: absolute; left: 51.34%; top: 55.24%; width: 20.26%; height: 15.35%; z-index: 2;'></a><a onclick='check(current_matrix,6);' title='6' style='position: absolute; left: 28.92%; top: 71.76%; width: 20.52%; height: 15.06%; z-index: 2;'></a><a onclick='check(current_matrix,5);' title='5' style='position: absolute; left: 6.62%; top: 71.82%; width: 20.85%; height: 15.06%; z-index: 2;'></a><a onclick='check(current_matrix,4);' title='4' style='position: absolute; left: 73.25%; top: 55.12%; width: 21.51%; height: 15.35%; z-index: 2;'></a><a onclick='check(current_matrix,8);' title='8' style='position: absolute; left: 73.77%; top: 71.65%; width: 19.93%; height: 15.41%; z-index: 2;'></a><a onclick='check(current_matrix,7);' title='7' style='position: absolute; left: 51.21%; top: 71.59%; width: 20.85%; height: 15.41%; z-index: 2;'></a>";index+=1;document.getElementById("matrix").src="img/"+Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]} 
+        else {index+=1;document.getElementById("matrix").src="img/"+Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]}}
+      function conclude() {const sum = (times.reduce((a, b) => a + b, 0))/1000;
+                           const avg = ((sum / times.length) || 0)/1000;
+                           document.getElementById("container").innerHTML=`<h1>Finished !</h1><b>Score</b> : ${score}/60<br><b>Total time</b> : ${sum}s<br><b>Average time per matrix</b> : ${avg}s`}
     </script>
 </head>
 <body>
-
-<div style='text-align: center;'>
-<img id="matrix" src="img/A1.jpg" height=100% alt="A Raven matrix" usemap="#matrix">
-<map name="matrix">
-  <area shape="rect" coords="137,917,517,1200" alt="1" onclick="check(current_matrix,1);">
-  <area shape="rect" coords="591,917,963,1200" alt="2" onclick="check(current_matrix,2);">
-  <area shape="rect" coords="1040,917,1420,1200" alt="3" onclick="check(current_matrix,3);">
-  <area shape="rect" coords="137,1220,517,1500" alt="4" onclick="check(current_matrix,4);">
-  <area shape="rect" coords="591,1220,963,1500" alt="5" onclick="check(current_matrix,5);">
-  <area shape="rect" coords="1040,1220,1420,1500" alt="6" onclick="check(current_matrix,6);">
-</map>
+<div id="container" style='position: relative;text-align: center;'>
+<h1>Raven's Progressive matrices</h1>
+<button onclick="initiate()">START</button>
 </div>
-<script>imageMapResize();</script>
 </body>
 </html>
