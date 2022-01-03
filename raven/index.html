@@ -13,13 +13,13 @@
       score=0
       index=0
       function check(m,r) {if (d[m]==r){score+=1;next_matrix()} else {next_matrix()};}
-      function next_matrix() {if (current_matrix=="B12") {alert("Finished ! Score : "+score)} else {index+=1;document.getElementById("matrix").src=Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]}}
+      function next_matrix() {if (current_matrix=="B12") {alert("Finished ! Score : "+score)} else {index+=1;document.getElementById("matrix").src="img/"+Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]}}
     </script>
 </head>
 <body>
 
 <div style='text-align: center;'>
-<img id="matrix" src="A1.jpg" height=100% alt="A Raven matrix" usemap="#matrix">
+<img id="matrix" src="img/A1.jpg" height=100% alt="A Raven matrix" usemap="#matrix">
 <map name="matrix">
   <area shape="rect" coords="137,917,517,1200" alt="1" onclick="check(current_matrix,1);">
   <area shape="rect" coords="591,917,963,1200" alt="2" onclick="check(current_matrix,2);">
