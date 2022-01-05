@@ -20,7 +20,8 @@
         else {index+=1;document.getElementById("matrix").src="img/"+Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]}}
       function conclude() {const sum = (times.reduce((a, b) => a + b, 0))/1000;
                            const avg = ((sum / times.length) || 0)/1000;
-                           document.getElementById("container").innerHTML=`<h1>Finished !</h1><b>Score</b> : ${score}/60<br><b>Total time</b> : ${sum}s<br><b>Average time per matrix</b> : ${avg}s`}
+                           document.getElementById("container").innerHTML=`<h1>Finished !</h1><b>Score</b> : ${score}/60<br><b>Total time</b> : ${sum}s<br><b>Average time per matrix</b> : ${avg}s<br><br><button onclick="dl();">Download my data</button>`}
+      function dl() {rows=[Object.keys(d),times];let csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");var encodedUri = encodeURI(csvContent);window.open(encodedUri);}
     </script>
 </head>
 <body>
