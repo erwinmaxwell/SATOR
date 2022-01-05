@@ -1,12 +1,22 @@
 <html>
 <head>
-    <title>RPM</title>
+    <title>RAVEN</title>
     <link rel="icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gabsolute.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;700&display=swap" rel="stylesheet">
     <style>input[type=button] {font-family: "Archivo",sans-serif;}.button{border-radius: 4px;color: white;border: none;background-color: #339933; padding: 0.15em 0.3em;font-size: 1.5em}</style>
     <script>
+      String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return minutes+'m'+seconds+"s";}
       var ajd = new Date();
       date=ajd.getUTCDate().toString()+ajd.getUTCMonth().toString()+ajd.getFullYear().toString()
       d={"A1":4,"A2":5,"A3":1,"A4":2,"A5":6,"A6":3,"A7":6,"A8":2,"A9":1,"A10":3,"A11":4,"A12":5,
@@ -30,7 +40,9 @@
                            const avg = ((sum / times.length) || 0)/1000;
                            const sumr=Math.round((sum + Number.EPSILON) * 100) / 100
                            const avgr=Math.round((avg + Number.EPSILON) * 100) / 100
-                           document.getElementById("container").innerHTML=`<h1>Finished</h1>&nbsp<b>Total score</b> : ${score}/60&nbsp<br><b>Total time</b> : ${sumr} s<br><b>Average time per matrix</b> : ${avgr} s<br><br><button class="button" onclick="dl();">Download my data</button>`}
+                           const avgt=`${avgr}`.toHHMMSS()
+                           const sumt=`${sumr}`.toHHMMSS()
+                           document.getElementById("container").innerHTML=`<h1>Finished</h1>&nbsp<b>Total score</b> : ${score}/60&nbsp<br><b>Total time</b> : ${sumt}<br><b>Average time per matrix</b> : ${avgt}<br><br><button class="button" onclick="dl();">Download my data</button>`}
     function dl(filename, text) {rows=[Object.keys(d),times,answers,correct];let csvContent = rows.map(e => e.join(",")).join("\n");
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(csvContent));
@@ -40,13 +52,14 @@
   document.body.appendChild(element);
 
   element.click();
+
   document.body.removeChild(element);
 }
     </script>
 </head>
 <body>
 <div id="container" style='position: relative;font-family: "Archivo",sans-serif;font-size: 4vh;width: min-content;text-align: center;margin-left: auto;margin-right: auto;  top: 40%;-ms-transform: translateY(-40%);transform: translateY(-40%);'>
-<h1>Raven's progressive matrices</h1>
+<h1>Raven's Progressive matrices</h1>
 <button class="button" onclick="initiate()">START</button>
 </div>
 </body>
