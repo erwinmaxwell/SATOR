@@ -2,6 +2,10 @@
 <head>
     <title>RAVEN</title>
     <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;700&display=swap" rel="stylesheet">
+    <style>body {font-family: "Archivo",sans-serif;}input[type=button] {font-family: "Archivo",sans-serif;}.button{border-radius: 4px;color: white;border: none;background-color: #339933; padding: 0.15em 0.3em;font-size: 1.5em}</style>
     <script>
       d={"A1":4,"A2":5,"A3":1,"A4":2,"A5":6,"A6":3,"A7":6,"A8":2,"A9":1,"A10":3,"A11":4,"A12":5,
          "B1":2,"B2":6,"B3":1,"B4":2,"B5":1,"B6":3,"B7":5,"B8":6,"B9":4,"B10":3,"B11":4,"B12":5,
@@ -20,7 +24,7 @@
         else {index+=1;document.getElementById("matrix").src="img/"+Object.keys(d)[index]+".jpg";current_matrix=Object.keys(d)[index]}}
       function conclude() {const sum = (times.reduce((a, b) => a + b, 0))/1000;
                            const avg = ((sum / times.length) || 0)/1000;
-                           document.getElementById("container").innerHTML=`<h1>Finished !</h1><b>Score</b> : ${score}/60<br><b>Total time</b> : ${sum}s<br><b>Average time per matrix</b> : ${avg}s<br><br><button onclick="dl();">Download my data</button>`}
+                           document.getElementById("container").innerHTML=`<h1>Finished !</h1><b>Score</b> : ${score}/60<br><b>Total time</b> : ${sum} s<br><b>Average time per matrix</b> : ${avg} s<br><br><button class="button" onclick="dl();">Download my data</button>`}
     function dl(filename, text) {rows=[Object.keys(d),times];let csvContent = rows.map(e => e.join(",")).join("\n");
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(csvContent));
@@ -38,7 +42,7 @@
 <body>
 <div id="container" style='position: relative;text-align: center;'>
 <h1>Raven's Progressive matrices</h1>
-<button onclick="initiate()">START</button>
+<button class="button" onclick="initiate()">START</button>
 </div>
 </body>
 </html>
