@@ -21,7 +21,18 @@
       function conclude() {const sum = (times.reduce((a, b) => a + b, 0))/1000;
                            const avg = ((sum / times.length) || 0)/1000;
                            document.getElementById("container").innerHTML=`<h1>Finished !</h1><b>Score</b> : ${score}/60<br><b>Total time</b> : ${sum}s<br><b>Average time per matrix</b> : ${avg}s<br><br><button onclick="dl();">Download my data</button>`}
-      function dl() {rows=[Object.keys(d),times];let csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");var encodedUri = encodeURI(csvContent);window.open(encodedUri);}
+    function dl(filename, text) {rows=[Object.keys(d),times];let csvContent = rows.map(e => e.join(",")).join("\n");
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(csvContent));
+  element.setAttribute('download', "Raven_Matrices_data.csv");
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
     </script>
 </head>
 <body>
