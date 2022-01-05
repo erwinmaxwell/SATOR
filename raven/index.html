@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;700&display=swap" rel="stylesheet">
     <style>input[type=button] {font-family: "Archivo",sans-serif;}.button{border-radius: 4px;color: white;border: none;background-color: #339933; padding: 0.15em 0.3em;font-size: 1.5em}</style>
     <script>
+      var EnterGood=1;
       String.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10); // don't forget the second param
     var hours   = Math.floor(sec_num / 3600);
@@ -42,6 +43,7 @@
                            const avgr=Math.round((avg + Number.EPSILON) * 100) / 100
                            const avgt=`${avgr}`.toHHMMSS()
                            const sumt=`${sumr}`.toHHMMSS()
+                           EnterGood=0
                            document.getElementById("container").innerHTML=`<h1>Finished</h1>&nbsp<b>Total score</b> : ${score}/60&nbsp<br><b>Total time</b> : ${sumt}<br><b>Average time per matrix</b> : ${avgt}<br><br><button class="button" onclick="dl();">Download my data</button>`}
     function dl(filename, text) {rows=[Object.keys(d),times,answers,correct];let csvContent = rows.map(e => e.join(",")).join("\n");
   var element = document.createElement('a');
@@ -55,11 +57,13 @@
 
   document.body.removeChild(element);
 }
+    document.addEventListener('keydown', function (event) {
+  if (event.key === '1') {check(current_matrix,1)} else if (event.key === '2') {check(current_matrix,2)} else if (event.key === '3') {check(current_matrix,3)} else if (event.key === '4') {check(current_matrix,4)} else if (event.key === '5') {check(current_matrix,5)} else if (event.key === '6') {check(current_matrix,6)} else if (event.key === '7') {check(current_matrix,7)} else if (event.key === '8') {check(current_matrix,8)} else if (event.keyCode == 13) {if (EnterGood==1){EnterGood=2;initiate();} else if (EnterGood==0){dl();}}});
     </script>
 </head>
 <body>
 <div id="container" style='position: relative;font-family: "Archivo",sans-serif;font-size: 4vh;width: min-content;text-align: center;margin-left: auto;margin-right: auto;  top: 40%;-ms-transform: translateY(-40%);transform: translateY(-40%);'>
-<h1>Raven's Progressive matrices</h1>
+<h1>Raven's progressive matrices</h1>
 <button class="button" onclick="initiate()">START</button>
 </div>
 </body>
