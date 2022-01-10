@@ -1,0 +1,748 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+    text-align: justify;
+}
+.legend {
+	text-align:center;
+	color:rgb(40, 40, 40);
+}
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+    text-align: justify;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:0px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+a{color:rgb(0,128,0);}
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>Molecular cell biology</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#molecular-cell-biology">Molecular cell biology</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#intro">Intro</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#series-1--the-secretory-and-endocytic-pathway">Series 1 : The Secretory and Endocytic Pathway</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1-intracellular-compartments-and-protein-sorting">1. Intracellular compartments and protein sorting</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#course-material-overview">Course material overview</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#cheat-sheets">Cheat sheets</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2-cell-culture-and-lysis--raj">2. Cell culture and lysis | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3-sds-page-and-western-blots--raj">3. SDS-Page and Western blots | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4-antibodies-and-immunofluorescence-microscopy--raj">4. Antibodies and immunofluorescence microscopy | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5-protein-modification-and-quality-control-in-the-secretory-pathway">5. Protein modification and quality control in the secretory pathway</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#cleavage-of-signal-peptides">Cleavage of signal peptides</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#glycosylation">Glycosylation </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#formation-of-disulphide-bonds">Formation of disulphide bonds</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#assembly-of-multi-subunit-proteins">Assembly of multi-subunit proteins</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#proline-isomeration">Proline isomeration</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#proper-folding">Proper folding </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#downstream-processing">Downstream processing</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6-vesicle-budding-and-fusion">6. Vesicle budding and fusion</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#budding">Budding</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#fusion">Fusion</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#7-epitope-controls--raj">7. Epitope controls | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#8-making-a-gfp-tagged-protein--raj">8. Making a GFP-tagged protein | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#9-endocytosis">9. Endocytosis</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#10-studying-the-secretory-and-endocytic-pathways">10. Studying the secretory and endocytic pathways</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#immunofluorescence-microscopy">Immunofluorescence microscopy </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#western-blotting">Western blotting</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#series-2--the-cytoskeleton">Series 2 : The Cytoskeleton</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#11-intro-to-cytoskeleton">11. Intro to cytoskeleton</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#12-microtubules">12. Microtubules</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#13-actin">13. Actin</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#14-intermediate-filaments">14. Intermediate filaments</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#15-analysing-protein-function--raj">15. Analysing protein function | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#16-determining-cytoskeleton-functions">16. Determining cytoskeleton functions</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#series-3--cell-signalling">Series 3 : Cell Signalling</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#17-intro-to-cell-signalling">17. Intro to cell signalling</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1819-phosphorylation-in-signalling">18+19. Phosphorylation in signalling </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#20-methods-for-studying-protein-protein-interactions--raj">20. Methods for studying protein-protein interactions | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#21-regulation-of-signalling-output">21. Regulation of signalling output</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#series-4--the-cell-division-cycle">Series 4 : The Cell Division Cycle</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22-stages-of-the-eukaryotic-cell-cycle">22. Stages of the eukaryotic cell cycle</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#23-principles-of-cell-cycle-control">23. Principles of cell cycle control</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#24-flow-cytometry-and-cell-cycle-analysis--raj">24. Flow cytometry and cell cycle analysis | RAJ</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2526-regulation-of-cdks">25+26. Regulation of CDKs</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#27-cell-cycle-checkpoints">27. Cell cycle checkpoints</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='molecular-cell-biology'><span>Molecular cell biology</span></h1><h3 id='intro'><span>Intro</span></h3><ul><li><span>Study of molecules that control cell structure and behaviour</span></li><li><span>Experimental design is a central theme (techniques,controls etc)</span></li><li><span>Tutorials are  i m p o r t a n t</span></li><li><span>Exam is primarily based on </span><strong><span>experimental design</span></strong></li></ul><div style="display: table; /* keep the background color wrapped tight */
+    margin: 0px auto 0px auto; /* keep the table centered */
+    padding:5px;background-color:lightblue;text-align:center"><a href="https://drive.google.com/file/d/1MCjfrMeAba0L5E7N37JqGfEKVmfUIF6B/view?usp=sharing" style="color:black">Molecular biology of the cell</a> | Alberts<br><a href="https://drive.google.com/file/d/1xzgy522mjUYdKvFYCoR256QBWK4QWOo5/view?usp=sharing" style="color:black">Molecular cell biology</a> | Lodish</div><p>&nbsp;</p><h2 id='series-1--the-secretory-and-endocytic-pathway'><span>Series 1 : The Secretory and Endocytic Pathway</span></h2><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 11</div><h3 id='1-intracellular-compartments-and-protein-sorting'><span>1. Intracellular compartments and protein sorting</span></h3><h4 id='course-material-overview'><span>Course material overview</span></h4><p><em><span>Alberts : Chapter 12, pp. 641-648, 659-662, 670-682</span></em></p><p><span>Cells are </span><strong><span>compartmentalized</span></strong><span> for </span><strong><span>organization</span></strong><span> and </span><strong><span>sorting</span></strong><span> of specific tasks. The compartments are called </span><strong><span>organelles</span></strong><span>. The compartments are separated by phospholipidic membranes, which contain a variety of proteins within them.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019164335503.png" alt="image-20211019164335503" style="zoom: 40%;" /></p><p><span>Proteins are transported to and from compartments through 3 major mechanisms:</span></p><ul><li><strong><span>gated transport</span></strong><span> : active transport of proteins and RNA molecules between the cytosol and the nucleus through nuclear pore complexes in the nuclear envelope</span></li><li><strong><span>transmembrane transport</span></strong><span> : transmembrane protein translocators directly transport specific proteins across a membrane from the cytosol into a space that is topologically distinct</span></li><li><strong><span>vesicular transport</span></strong><span> : membrane-enclosed transport intermediates ferry proteins from one topologically equivalent compartment to another</span></li></ul><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019184255020.png" alt="image-20211019184255020" style="zoom:50%;" /></p><blockquote><p><span>virtually all proteins destined for secretion or for the ER itself, the Golgi apparatus, the lysosomes, the endosomes, and the plasma membrane are first imported into the ER from the cytosol</span></p></blockquote><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019185759938.png" alt="image-20211019185759938" style="zoom:50%;" /></p><p><span>A few things are required for a protein to transfer :</span></p><ul><li><span>a signal (tag) intrinsic to the protein</span></li><li><span>a receptor to recognise that signal and direct the protein to the correct membrane</span></li><li><span>a translocation machinery to pass the membrane</span></li><li><span>energy</span></li></ul><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019185354195.png" alt="image-20211019185354195" style="zoom: 50%;" /></p><p><strong><span>All proteins begin their synthesis in the cytosol</span></strong><span>. Proteins destined for the cytosol, mitochondria, nucleus or peroxisomes are synthesized by </span><strong><span>cytosolic ribosomes</span></strong><span>, then recognised and transferred by a variety of molecules (free-flowing importins or peroxins respectively for the nucleus and peroxisome, membrane bound complexes for the mitochondria etc). Proteins destined for membrane or secretory pathway can also be synthesized in the cytosol and directed (post-translational) or can be synthesized by ribosomes </span><strong><span>bound to the endoplasmic reticulum</span></strong><span> membrane during translation (co-translational) thanks to </span><strong><span>S</span></strong><span>ignal </span><strong><span>R</span></strong><span>ecognition </span><strong><span>P</span></strong><span>articles, as shown below.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019190331333.png" alt="image-20211019190331333" style="zoom: 50%;" /></p><p><strong><span>Sec-61 complex</span></strong><span> : protein translocator common on the endoplasmic reticulum</span></p><p><span>Membrane proteins are integrated on the endoplasmic reticulum via various sets of signal sequences (see below)</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019192357042.png" alt="image-20211019192357042" style="zoom:50%;" /></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019192112697.png" alt="image-20211019192112697" style="zoom:67%;" /></p><h4 id='cheat-sheets'><span>Cheat sheets</span></h4><p><img src="https://erwinmaxwell.github.io/sator/mcb/aminoacids.svg" alt="aminoacids"  /></p><h3 id='2-cell-culture-and-lysis--raj'><span>2. Cell culture and lysis | </span><span style="color:blue"><span>RAJ</span></span></h3><p><span>DNA replication leaves out 50-200bp at the 3&#39; end, shortening the chromosomes at the telomeres. Telomere shortening limits the number of cell division in primary cells =&gt; use immortal cell lines.</span></p><p><span>Various cell lines exist, and are grown in diverse culture media. Below is an overview of some cell lines, their origin and required media.</span></p><p><img src="https://www.researchgate.net/publication/334265720/figure/tbl5/AS:777468118052872@1562374252902/Overview-of-used-cell-lines-their-origin-and-culture-media.png" alt="Overview of used cell lines, their origin and culture media." style="zoom:50%;" /></p><p><span>For analysis purposes, it is sometimes necessary to lyse the cell membrane using detergents.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211019195558033.png" alt="image-20211019195558033" style="zoom: 43%;" /></p><p><span>Membrane proteins can be solubilized in detergents.</span></p><h3 id='3-sds-page-and-western-blots--raj'><span>3. SDS-Page and Western blots | </span><span style="color:blue"><span>RAJ</span></span></h3><p><strong><span>S</span></strong><span>odium </span><strong><span>D</span></strong><span>odecyl </span><strong><span>S</span></strong><span>ulphate </span><strong><span>P</span></strong><span>oly</span><strong><span>a</span></strong><span>crylamide </span><strong><span>G</span></strong><span>el </span><strong><span>E</span></strong><span>lectrophoresis can pretty quickly and cheaply separatesproteins by their sizes only.</span></p><ol start='' ><li><span>Heat up cell lysate with SDS (unfold protein into long polypeptide chain) and beta-mercaptoethanol (break disulphide bonds)</span></li><li><span>Put heated sample on polyacrylamide gel (polymerisation can be controlled for different pore size and qualities)</span></li><li><span>Put gel in conductive buffer and apply current of desired intensity (~100V)</span></li><li><span>Simply stain gel for detection of bands, or transfer on nitrocellulose paper for immunoblotting (aka Western blot) if proper antigen (can also be analysed with mass spectroscopy)</span></li></ol><p><span>Western blotting consists of soaking nitrocellulose membrane in various solutions of antibodies to link antigen with </span><strong><span>H</span></strong><span>orse</span><strong><span>r</span></strong><span>adish </span><strong><span>P</span></strong><span>eroxydase or </span><strong><span>A</span></strong><span>lkaline </span><strong><span>P</span></strong><span>hosphatase. Adding luminol and hydrogen peroxyde to a  HRP blot will make it light up. Adding 5-bromo,4-chloro,3-indolyl phosphate (BCIP) and Nitroblue Tetrazolium (NBT) to a AP blot in alkaline conditions will make it color up.</span></p><p><strong><span>N.B.</span></strong><span> : Primary and Secondary antigens need to come from different animals</span></p><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 12</div><h3 id='4-antibodies-and-immunofluorescence-microscopy--raj'><span>4. Antibodies and immunofluorescence microscopy | </span><span style="color:blue"><span>RAJ</span></span></h3><p><span>A wide variety of </span><strong><span>fluorescently dyed antibodies</span></strong><span> are available to determine the location of proteins in fixed cells.</span>
+<span>This can be achieved using a single antibody directly including a dye when the protein is abundant, or indirectly, using a secondary antibody, as shown below.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220108201204373.png" alt="image-20220108201204373" style="zoom: 50%;" /></p><h3 id='5-protein-modification-and-quality-control-in-the-secretory-pathway'><span>5. Protein modification and quality control in the secretory pathway</span></h3><p><em><span>Alberts : Chapter 12 pp. 683-688 | Chapter 13 pp. 712, 715-716, 743-744</span></em></p><p><span>We&#39;re interested in the various processing of proteins in the secretory pathway, and particularly in the Endoplasmic Reticulum.</span></p><h6 id='cleavage-of-signal-peptides'><span>Cleavage of signal peptides</span></h6><p><span>As seen </span><a href='#1-intracellular-compartments-and-protein-sorting'><span>previously</span></a><span>, proteins require a signal sequence for transport in the proper organelle. These peptides are generally cleaved off once the protein has reached its destination.</span></p><h6 id='glycosylation'><span>Glycosylation </span></h6><p><span>= attaching a carbohydrate to a functional group of another molecule</span></p><p><span>In the ER, glycosylation of proteins happens to facilitate </span><strong><span>folding</span></strong><span>, </span><strong><span>binding of chaperones</span></strong><span> and to limit access of </span><strong><span>proteases</span></strong><span> (increasing stability in the extracellular space). For some proteins, more extensive glycosylation is necessary, for </span><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7226260/#sec4-cells-09-01022title'><span>protection against pathogens</span></a><span> or even cell to cell adhesion (oligosaccharides).</span></p><p><span>Glycosylation of proteins can occur on :</span></p><ul><li><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.217ex" height="1.781ex" role="img" focusable="false" viewBox="0 -705 2306 787" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-1-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-1-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-1-TEX-N-48" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q57 680 180 680Q315 680 324 683H335V637H302Q262 636 251 634T233 622L232 500V378H517V622Q510 629 506 631T490 634T447 637H414V683H425Q446 680 569 680Q704 680 713 683H724V637H691Q651 636 640 634T622 622V61Q628 51 639 49T691 46H724V0H713Q692 3 569 3Q434 3 425 0H414V46H447Q489 47 498 49T517 61V332H232V197L233 61Q239 51 250 49T302 46H335V0H324Q303 3 180 3Q45 3 36 0H25V46H58Q100 47 109 49T128 61V622Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(778,0)"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-1-TEX-N-4F"></use><use data-c="48" xlink:href="#MJX-1-TEX-N-48" transform="translate(778,0)"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mo>−</mo></mrow><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false">OH</mi></mrow></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\ce{-OH}</script><span> group of serine or threonine = </span><strong><span>O-linked</span></strong><span>, happens in the Golgi</span></li><li><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.087ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 2690.6 833" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-2-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-2-TEX-N-4E" d="M42 46Q74 48 94 56T118 69T128 86V634H124Q114 637 52 637H25V683H232L235 680Q237 679 322 554T493 303L578 178V598Q572 608 568 613T544 627T492 637H475V683H483Q498 680 600 680Q706 680 715 683H724V637H707Q634 633 622 598L621 302V6L614 0H600Q585 0 582 3T481 150T282 443T171 605V345L172 86Q183 50 257 46H274V0H265Q250 3 150 3Q48 3 33 0H25V46H42Z"></path><path id="MJX-2-TEX-N-48" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q57 680 180 680Q315 680 324 683H335V637H302Q262 636 251 634T233 622L232 500V378H517V622Q510 629 506 631T490 634T447 637H414V683H425Q446 680 569 680Q704 680 713 683H724V637H691Q651 636 640 634T622 622V61Q628 51 639 49T691 46H724V0H713Q692 3 569 3Q434 3 425 0H414V46H447Q489 47 498 49T517 61V332H232V197L233 61Q239 51 250 49T302 46H335V0H324Q303 3 180 3Q45 3 36 0H25V46H58Q100 47 109 49T128 61V622Z"></path><path id="MJX-2-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-2-TEX-N-2212"></use></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(778,0)"><g data-mml-node="mi"><use data-c="4E" xlink:href="#MJX-2-TEX-N-4E"></use><use data-c="48" xlink:href="#MJX-2-TEX-N-48" transform="translate(750,0)"></use></g></g><g data-mml-node="msub" transform="translate(2278,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mpadded"><g data-mml-node="mphantom"></g></g></g></g><g data-mml-node="TeXAtom" transform="translate(9,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mpadded"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-2-TEX-N-32"></use></g></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mo>−</mo></mrow><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false">NH</mi></mrow><msub><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mpadded width="0"><mphantom><mi>X</mi></mphantom></mpadded></mrow></mrow><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mpadded height="0"><mn>2</mn></mpadded></mrow></mrow></msub></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\ce{-NH2}</script><span> group of asparagine = </span><strong><span>N-linked</span></strong><span>, happens in the ER </span></li></ul><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211022152957162.png" alt="image-20211022152957162" style="zoom:50%;" /></p><p><span>The oligosaccharide shown in the figure above is assembled inside the ER, on a lipid carrier molecule called dolichol, and then transferred on its target asparagine by an enzyme called oligosaccharide transferase.</span></p><h6 id='formation-of-disulphide-bonds'><span>Formation of disulphide bonds</span></h6><p><strong><span>P</span></strong><span>rotein </span><strong><span>D</span></strong><span>isulfide </span><strong><span>I</span></strong><span>somerase is an ER resident protein, involved in the formation of disulphide bonds within the ER lumen.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211022200846833.png" alt="image-20211022200846833" style="zoom: 60%;" /></p><h6 id='assembly-of-multi-subunit-proteins'><span>Assembly of multi-subunit proteins</span></h6><p><span>Protein complexes made of multiple subunits are assembled in the ER.</span></p><h6 id='proline-isomeration'><span>Proline isomeration</span></h6><p><span>Peptidyl-prolyl isomerase are very important enzymes, necessary for accelerating the naturally very slow isomerisation of proline residues (trans being the most common). Folding of certain proteins require certain isomers, and PPIase accelerates the process.</span></p><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Proline-cis-trans-isomerisation.svg/768px-Proline-cis-trans-isomerisation.svg.png" style="zoom:50%;" /></p><h6 id='proper-folding'><span>Proper folding </span></h6><p>&nbsp;</p><p><strong><span>The unfolded protein response</span></strong><span> :</span></p><p>&nbsp;</p><h6 id='downstream-processing'><span>Downstream processing</span></h6><p><span>Further processing may occur in the Golgi apparatus (carbohydrates, </span><a href='https://pubmed.ncbi.nlm.nih.gov/19945768/'><span>mannose phosphorylation</span></a><span>), as well as in vesicles themselves (prohormone, </span><a href='https://pubs.acs.org/doi/10.1021/acs.chemrev.7b00120'><span>proteolytic cleavage</span></a><span>).</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20211023153525861.png" alt="image-20211023153525861" style="zoom:80%;" /></p><h3 id='6-vesicle-budding-and-fusion'><span>6. Vesicle budding and fusion</span></h3><p><em><span>Alberts : Chapter 13  pp. 695-710, 727-730</span></em></p><h6 id='budding'><span>Budding</span></h6><p><span>Vesicle budding requires formation of a </span><strong><span>protein coat</span></strong><span> that selectively </span><strong><span>recruits specific cargo</span></strong><span> and provides </span><strong><span>curvature</span></strong></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109113546846.png" referrerpolicy="no-referrer" alt="image-20220109113546846"></p><p><span>Different intracellular membranes present different </span><strong><span>phosphoinositide</span></strong><span> molecules, recognized by different coat proteins.</span></p><p><span>The coat formation is initiated by small </span><strong><span>GTPases</span></strong><span> (i.e. SarI and ArfI), varying depending on the membrane, but that can recruit the same coat protein (i.e. clathrin) at different locations.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109113735593.png" referrerpolicy="no-referrer" alt="image-20220109113735593"></p><h6 id='fusion'><span>Fusion</span></h6><p><span>Fusion of the vesicles requires </span><strong><span>monomeric Rab-GTPases</span></strong><span> to dock to specific membranes.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109115023058.png" referrerpolicy="no-referrer" alt="image-20220109115023058"></p><p><span>Vesicle (</span><strong><span>v-</span></strong><span>) and transmembrane (</span><strong><span>t-</span></strong><span>) </span><strong><span>SNARE</span></strong><span> proteins allow the vesicle to tether to its target membrane.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109115243862.png" referrerpolicy="no-referrer" alt="image-20220109115243862"></p><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 13</div><h3 id='7-epitope-controls--raj'><span>7. Epitope controls | </span><span style="color:blue"><span>RAJ</span></span></h3><p><strong><span>Epitope tags</span></strong><span> are small peptide sequences that can be added at the N or C terminus of a protein (during cDNA design) to make it detectable.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220108195532728.png" alt="image-20220108195532728" style="zoom:50%;" /></p><p><span>Commercial plasmids containing a variety of epitope tags are available. Using them requires cloning our gene of interest in-frame into the restricted plasmid.</span></p><h3 id='8-making-a-gfp-tagged-protein--raj'><span>8. Making a GFP-tagged protein | </span><span style="color:blue"><span>RAJ</span></span></h3><p><strong><span>GFP</span></strong><span> is a Green Fluorescent Protein isolated from the Pacific jellyfish </span><em><span>A. victoria</span></em><span>.</span>
+<span>It is 298 aa long, weighs 26.9 Da and is excited at 395 nm making it emit at 509 nm.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220108200754733.png" alt="image-20220108200754733" style="zoom:50%;" /></p><p><span>It can be added at any terminus of a protein to act as a reporter.</span></p><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 14</div><h3 id='9-endocytosis'><span>9. Endocytosis</span></h3><p><em><span>Alberts : Chapter 13: Intracellular membrane traffic pp731 -742</span></em></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109155301781.png" alt="image-20220109155301781" style="zoom: 67%;" /></p><p><span>The vesicles used in the process of receptor-mediated endocytosis are called </span><strong><span>endosomes</span></strong></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109133941204.png" alt="image-20220109133941204"  /></p><p><span>Low density lipoproteins (</span><strong><span>LDL</span></strong><span>) are one of the five groups of lipid transport particles in the body. It is transported into the cell through its binding to LDL receptors (LDLR).</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109134131568.png" referrerpolicy="no-referrer" alt="image-20220109134131568"></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109154053990.png" alt="image-20220109154053990" style="zoom: 67%;" /></p><p><span>pH changes are an important trigger indicating localisation.</span></p><p><span>Other example of endocytosis include </span><strong><span>Transferrin R</span></strong><span> for the transport of iron ions and </span><strong><span>EGFR</span></strong><span> for growth factors. EGFR are ubiquitinylated, which targets them to </span><strong><span>M</span></strong><span>ulti</span><strong><span>v</span></strong><span>esicular </span><strong><span>B</span></strong><span>odies, where both the receptor and ligand are degraded.</span></p><h3 id='10-studying-the-secretory-and-endocytic-pathways'><span>10. Studying the secretory and endocytic pathways</span></h3><p><span>Two techniques described previously are central to the study of the secretory and endocytic pathway :</span></p><h5 id='immunofluorescence-microscopy'><span>Immunofluorescence microscopy </span></h5><ul><li><span>To determine whether a mutation identified in a disease affects subcellular</span>
+<span>localisation</span></li><li><span>To determine whether a particular domain of a protein or signal sequence is</span>
+<span>required for recruitment to a particular compartment</span></li><li><span>To see how the localisation of a protein changes in response to a treatment or</span>
+<span>over time (e.g. depletion of a protein, growth factor stimulus, drug treatment)</span></li></ul><h5 id='western-blotting'><span>Western blotting</span></h5><ul><li><span>To determine the amount of a particular protein</span></li><li><span>To look at post-translational modification e.g. molecular weight change of</span>
+<span>glycosylated protein</span></li><li><span>Can look at cellular localisation combined with subcellular fractionation</span>
+<span>techniques</span></li></ul><h2 id='series-2--the-cytoskeleton'><span>Series 2 : The Cytoskeleton</span></h2><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 15</div><h3 id='11-intro-to-cytoskeleton'><span>11. Intro to cytoskeleton</span></h3><p><span>The cytoskeleton is a </span><strong><span>dynamic network of filaments</span></strong><span> that provides the cell with </span><strong><span>shape</span></strong><span>, </span><strong><span>support</span></strong><span>, </span><strong><span>strength</span></strong><span>, </span><strong><span>organisation</span></strong><span> and </span><strong><span>movement</span></strong><span>.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109165046243.png" referrerpolicy="no-referrer" alt="image-20220109165046243"></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109172815512.png" alt="image-20220109172815512" style="zoom:67%;" /></p><h3 id='12-microtubules'><span>12. Microtubules</span></h3><p><span>Microtubules are </span><strong><span>polar</span></strong><span> polymers of </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-6-TEX-I-1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FC" xlink:href="#MJX-6-TEX-I-1D6FC"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\alpha</script><span> / </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.281ex" height="2.034ex" role="img" focusable="false" viewBox="0 -705 566 899" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-5-TEX-I-1D6FD" d="M29 -194Q23 -188 23 -186Q23 -183 102 134T186 465Q208 533 243 584T309 658Q365 705 429 705H431Q493 705 533 667T573 570Q573 465 469 396L482 383Q533 332 533 252Q533 139 448 65T257 -10Q227 -10 203 -2T165 17T143 40T131 59T126 65L62 -188Q60 -194 42 -194H29ZM353 431Q392 431 427 419L432 422Q436 426 439 429T449 439T461 453T472 471T484 495T493 524T501 560Q503 569 503 593Q503 611 502 616Q487 667 426 667Q384 667 347 643T286 582T247 514T224 455Q219 439 186 308T152 168Q151 163 151 147Q151 99 173 68Q204 26 260 26Q302 26 349 51T425 137Q441 171 449 214T457 279Q457 337 422 372Q380 358 347 358H337Q258 358 258 389Q258 396 261 403Q275 431 353 431Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FD" xlink:href="#MJX-5-TEX-I-1D6FD"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>β</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\beta</script><span> - tubulin dimers. They have fast growing + (finishing at </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.281ex" height="2.034ex" role="img" focusable="false" viewBox="0 -705 566 899" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-5-TEX-I-1D6FD" d="M29 -194Q23 -188 23 -186Q23 -183 102 134T186 465Q208 533 243 584T309 658Q365 705 429 705H431Q493 705 533 667T573 570Q573 465 469 396L482 383Q533 332 533 252Q533 139 448 65T257 -10Q227 -10 203 -2T165 17T143 40T131 59T126 65L62 -188Q60 -194 42 -194H29ZM353 431Q392 431 427 419L432 422Q436 426 439 429T449 439T461 453T472 471T484 495T493 524T501 560Q503 569 503 593Q503 611 502 616Q487 667 426 667Q384 667 347 643T286 582T247 514T224 455Q219 439 186 308T152 168Q151 163 151 147Q151 99 173 68Q204 26 260 26Q302 26 349 51T425 137Q441 171 449 214T457 279Q457 337 422 372Q380 358 347 358H337Q258 358 258 389Q258 396 261 403Q275 431 353 431Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FD" xlink:href="#MJX-5-TEX-I-1D6FD"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>β</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\beta</script><span>-tubulin) and slow growing - (finishing at </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-6-TEX-I-1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FC" xlink:href="#MJX-6-TEX-I-1D6FC"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\alpha</script><span>-tubulin) ends. They exhibit dynamic instability, powered by GTP hydrolysis.</span>
+<img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109170202935.png" alt="image-20220109170202935" style="zoom:67%;" /></p><p><strong><span>M</span></strong><span>icrotubule </span><strong><span>A</span></strong><span>ssociated </span><strong><span>P</span></strong><span>roteins (e.g. stathmin) regulate stability and crosslinking.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109170832470.png" referrerpolicy="no-referrer" alt="image-20220109170832470"></p><p><strong><span>Motor proteins</span></strong><span> (dynein, kinesins) move cargoes along microtubules in both directions. They are responsible for moving and organising cell contents</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109170007435.png" alt="image-20220109170007435" style="zoom:67%;" /></p><h3 id='13-actin'><span>13. Actin</span></h3><p><span>Actin filaments are polymers of </span><strong><span>globular actin monomers</span></strong><span>. They are highly dynamic and undergo </span><strong><span>treadmilling</span></strong><span>, powered by ATP hydrolysis</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109172543209.png" referrerpolicy="no-referrer" alt="image-20220109172543209"></p><p><span>A range of </span><strong><span>actin binding proteins</span></strong><span> regulate stability and various forms of crosslinking</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109172347610.png" referrerpolicy="no-referrer" alt="image-20220109172347610"></p><p><span>Actin determines cell shape, formation of contractile structures and migration</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109172720032.png" referrerpolicy="no-referrer" alt="image-20220109172720032"></p><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 17</div><h3 id='14-intermediate-filaments'><span>14. Intermediate filaments</span></h3><p><span>Intermediate filaments are </span><strong><span>rope-like polymers</span></strong><span>. They are flexible, strong and relatively stable. They provide </span><strong><span>resistance</span></strong><span> to mechanical strain.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109180453116.png" referrerpolicy="no-referrer" alt="image-20220109180453116"></p><p><span>Many types of IF are expressed in different tissues.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109180908596.png" alt="image-20220109180908596" style="zoom:50%;" /></p><p><strong><span>Nuclear lamins</span></strong><span> are a good example, present in most cells and allowing a variety of connections.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109185205542.png" alt="image-20220109185205542" style="zoom:67%;" /></p><p><span>Mutations in some IFs weaken the network and cause human diseases. Some filaments can be modulated by phosphorylation. For example, nuclear lamins are phosphorylated by Cdk1 during mitosis, allowing for nuclear wall breakdown.</span></p><h3 id='15-analysing-protein-function--raj'><span>15. Analysing protein function | </span><span style="color:blue"><span>RAJ</span></span></h3><p><span>Protein function can be manipulated at:</span></p><ol start='' ><li><span>DNA level</span>
+<span>• Overexpression of wt gene</span>
+<span>• Overexpression of dominant active mutant</span>
+<span>• Overexpression of dominant negative (inactive) mutant</span></li><li><span>mRNA level</span>
+<span>• Expression of mRNA</span>
+<span>• RNA interference</span></li><li><span>Protein level</span>
+<span>• Chemical inhibitors</span></li></ol><p><span>Protein structure and function can be regulated by phosphorylation of </span><strong><span>serine</span></strong><span>, </span><strong><span>threonine</span></strong><span> and </span><strong><span>tyrosine</span></strong><span> residues. Changing these residues by negatively charged ones such as aspartic or glutamic acid can make them constitutively active. Alternatively, replacing them with uncharged and unphosphorylatable residues like alanine or phenylalanine will render them constitutively inactive.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109193706384.png" alt="image-20220109193706384" style="zoom: 33%;" /></p><p><span>Over-expressing mutant proteins to interfere with a certain function is a widely used study method. Techniques used for such altering of protein functions can be gene cloning and transient transfection, or fancier like </span><strong><span>RNA interference</span></strong><span> (RNAi) :</span></p><p><span>A specific double-stranded RNA (</span><strong><span>dsRNA</span></strong><span>) molecule is designed and introduced in the cell, where it is cleaved into small interfering RNA (</span><strong><span>siRNA</span></strong><span>) molecules by an enzyme known as </span><strong><span>Dicer</span></strong><span>. The two strands of those siRNA fragments are unwound and one of them binds to the </span><strong><span>R</span></strong><span>NA-</span><strong><span>i</span></strong><span>nduced </span><strong><span>s</span></strong><span>ilencing </span><strong><span>c</span></strong><span>omplex, which can then proceed to silence the targeted gene&#39;s expression by complementarily binding to a sequence of the corresponding mRNA and cleaving it by use of </span><strong><span>Argonaute 2</span></strong><span>, an enzyme of the </span><strong><span>RISC</span></strong><span>.</span></p><p><span>Alternatively, chemical inhibitors can be used to target specific protein functions (e.g. Ro 3306 competing with ATP to inhibit Cdk1 activity).</span></p><h3 id='16-determining-cytoskeleton-functions'><span>16. Determining cytoskeleton functions</span></h3><p><span>RNAi is much simpler and cheaper than breeding knock-out organisms.</span></p><p><span>Chemical inhibitors of actin treadmilling such as Nocodazole and Cytochalasin D can be used to appreciate its properties and functions.</span></p><p><span>Over-expressing functionless mutants such as headless motor proteins can prove to be a good specific method of study of intracellular transport.</span></p><p><span>Mutating lamin&#39;s phosphorylatable residues with unphosphorylatable ones to create a constituvely inactive protein reveals its necessity for the depolymerisation of nuclear lamina.</span></p><h2 id='series-3--cell-signalling'><span>Series 3 : Cell Signalling</span></h2><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 18</div><h3 id='17-intro-to-cell-signalling'><span>17. Intro to cell signalling</span></h3><p><span>Cell signalling is widespread and essential.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109233607310.png" alt="image-20220109233607310" style="zoom:67%;" /></p><p><span>Different kinds of signal receptors exist.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109234009629.png" alt="image-20220109234009629" style="zoom:50%;" /></p><p><span>Conformational changes activate signal transduction.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109233844127.png" alt="image-20220109233844127" style="zoom: 33%;" /></p><h3 id='1819-phosphorylation-in-signalling'><span>18+19. Phosphorylation in signalling </span></h3><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109234312980.png" alt="image-20220109234312980" style="zoom: 50%;" /></p><p><span>Only serine, threonine and tyrosine residues can get phosphorylated.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109234534971.png" alt="image-20220109234534971" style="zoom:50%;" /></p><p><span>A variety of specific kinases exist.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110000056606.png" alt="image-20220110000056606" style="zoom: 67%;" /></p><p><span>Receptor tyrosine kinases&#39; activation depends on dimerization.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220109235844297.png" alt="image-20220109235844297" style="zoom: 80%;" /></p><p><span>Phosphorylation events create docking sites for further transduction. RTKs display </span><strong><span>phosphotyrosines</span></strong><span>, which have high affinity for receptor domains such as </span><strong><span>SH2</span></strong><span> and </span><strong><span>PTB</span></strong><span> (which recognise the residue and a particular surrounding amino acid sequence), turning the activated receptor into a </span><strong><span>signalling hub</span></strong><span>.</span></p><p><span>Mutating phosphorylatable residues into charged (called a </span><strong><span>phosphomimetic substitution</span></strong><span>) or unphosphorylatable (called </span><strong><span>non-phosphorylatable substitution</span></strong><span>) amino acids is a good technique for study of signalling pathways.</span></p><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 19</div><h3 id='20-methods-for-studying-protein-protein-interactions--raj'><span>20. Methods for studying protein-protein interactions | </span><span style="color:blue"><span>RAJ</span></span></h3><p><span>Protein-protein interactions are critical in virtually all cellular processes.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110000302877.png" alt="image-20220110000302877" style="zoom:50%;" /></p><p><span>Methods to study protein-protein interactions include: affinity chromatography (pull-down assay) and co-immunoprecipitation.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110001140670.png" referrerpolicy="no-referrer" alt="image-20220110001140670"></p><p><span>These techniques may be used for identifying unknown protein binding partners (using Mass Spectrometry) or characterising known protein-protein interactions (using Western botting).</span></p><h3 id='21-regulation-of-signalling-output'><span>21. Regulation of signalling output</span></h3><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110002112228.png" alt="image-20220110002112228" style="zoom: 60%;" /></p><p><strong><span>Monomeric GTPases</span></strong><span> are common molecular switches in cell signalling.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110002218282.png" alt="image-20220110002218282" style="zoom:50%;" /></p><p><strong><span>MAPK cascades</span></strong><span> are a highly conserved signalling component consisting of three-tiered protein kinases</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110002454999.png" alt="image-20220110002454999" style="zoom:60%;" /></p><p><span>Mutations of Ras and Raf proteins is a common cause of cancer.</span></p><p><span>Different ERK activities result in different cellular response. </span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110002933728.png" alt="image-20220110002933728" style="zoom:67%;" /></p><p><strong><span>Positive</span></strong><span> and </span><strong><span>negative</span></strong><span> </span><strong><span>feedback circuits</span></strong><span> shape signalling outputs.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110003659170.png" alt="image-20220110003659170" style="zoom:67%;" /></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110003217836.png" alt="image-20220110003217836" style="zoom: 50%;" /></p><p>&nbsp;</p><h2 id='series-4--the-cell-division-cycle'><span>Series 4 : The Cell Division Cycle</span></h2><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 20</div><h3 id='22-stages-of-the-eukaryotic-cell-cycle'><span>22. Stages of the eukaryotic cell cycle</span></h3><p><span>The eukaryotic cell cycle is required for unicellular </span><strong><span>propagation</span></strong><span> and </span><strong><span>development</span></strong><span> of multicellular organisms.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110121745157.png" referrerpolicy="no-referrer" alt="image-20220110121745157"></p><p><span>The cell cycle is divided into specific </span><strong><span>cell cycle stages</span></strong><span> with abrupt transitions between one stage and the next</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110121905278.png" referrerpolicy="no-referrer" alt="image-20220110121905278"></p><p><strong><span>Chromosome segregation</span></strong><span> occurs on a microtubule-based bipolar mitotic spindle.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110121940921.png" alt="image-20220110121940921" style="zoom: 50%;" /></p><p><span>Cell fusion experiments revealed internal regulators of the cell cycle termed MPF and SPF. Both are Cyclin-dependent kinase (</span><strong><span>Cdk</span></strong><span>) - cyclin complexes.</span></p><p><span>Mitotic cells contain the M-phase promoting factor (</span><strong><span>MPF</span></strong><span>), an activator that will push a cell in any phase of the cell cycle directly into mitosis. </span>
+<span>S-phase cells contain the S-phase promoting factor (</span><strong><span>SPF</span></strong><span>), an activator that push G1 phase cells into S-phase.  G2 phase cells are insensitive to the SPF. The DNA does not re-replicate before mitosis. This is a </span><strong><span>critical control</span></strong><span>.</span>
+<span>G1 and G2 phase cells do not contain either the MPF or SPF (at least in an active state).</span></p><h3 id='23-principles-of-cell-cycle-control'><span>23. Principles of cell cycle control</span></h3><p><span>MPF and SPF are examples of CDK/cyclin complexes that drive transitions between different cell cycle stages. CDK are small (~34kDa) serine/threonine kinases that need cyclin to get into an active conformation.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110123932026.png" alt="image-20220110123932026" style="zoom:50%;" /></p><p><span>The activity of CDKs is controlled through the cyclical synthesis and degradation of the respective cyclin subunit.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110124033813.png" referrerpolicy="no-referrer" alt="image-20220110124033813"></p><p><span>Different CDK/cyclin complexes control passage through different transitions of the cell cycle.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110124114638.png" alt="image-20220110124114638" style="zoom:67%;" /></p><h3 id='24-flow-cytometry-and-cell-cycle-analysis--raj'><span>24. Flow cytometry and cell cycle analysis | </span><span style="color:blue"><span>RAJ</span></span></h3><ol start='' ><li><strong><span>Biophysical technique</span></strong><span> : the </span><strong><span>flow cytometer</span></strong><span> produces a single line of cells that are interrogated</span>
+<span>by a laser. The refracted light or fluorescent light is detected by a specific detector(s).</span></li></ol><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110130331756.png" referrerpolicy="no-referrer" alt="image-20220110130331756"></p><ol start='2' ><li><strong><span>Applications</span></strong><span> : cell number, cell identification, protein/DNA levels &amp; protein/DNA post-translational modifications in </span><strong><span>single cells</span></strong><span>.</span></li></ol><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110130603371.png" alt="image-20220110130603371" style="zoom:67%;" /></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110130728964.png" referrerpolicy="no-referrer" alt="image-20220110130728964"></p><ol start='3' ><li><strong><span>Cell cycle analysis</span></strong><span> : flow cytometry is widely used to analyse cell cycle progression by analysing</span>
+<span>the </span><strong><span>DNA content</span></strong><span> of single cells using the DNA-binding dye </span><strong><span>Propidium Iodide</span></strong><span>.</span></li></ol><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110130757523.png" alt="image-20220110130757523" style="zoom:50%;" /></p><div style="text-align:center;font-style:italic;font-weight:bold">WEEK 21</div><h3 id='2526-regulation-of-cdks'><span>25+26. Regulation of CDKs</span></h3><p><span>Cyclins lead to allosteric activation of CDKs, moving the T-loop out of the catalytic cleft, rotating the PSTAIRE helix and allowing Glu-51 and Lys-33 to form a salt bridge that enables presentation of the g-P of ATP for nucleophilic attack.</span></p><p><span>CDKs are regulated by both </span><strong><span>activating</span></strong><span> and </span><strong><span>inhibitory</span></strong><span> </span><strong><span>phosphorylation</span></strong><span> events</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110132544016.png" referrerpolicy="no-referrer" alt="image-20220110132544016"></p><p><span>CDK alone is not phosphorylated. Upon binding of cyclin, structural changes in the CDK molecule expose three sites for phosphorylation : </span></p><ul><li><span>Thr-161 (in T-loop) is phosphorylated by </span><strong><span>CAK</span></strong><span> (CDK activating kinase) to </span><strong><span>stabilise</span></strong><span> the T-loop in the open (active) conformation. </span></li><li><span>Thr-14 and Tyr-15 are phosphorylated by </span><strong><span>Wee1</span></strong><span> (these are inhibitory) repelling ATP from the active site.</span>
+<span>Upon activation of Cdc25, this phosphatase dephosphorylates Thr-14 and Tyr-15 to activate CDK.</span></li></ul><p><span>Therefore the timing of mitotic entry depends upon what triggers the activation of Cdc25 – this is the “rate limiting step”.</span>
+<span>=&gt; The </span><strong><span>Cdc25</span></strong><span> phosphatase is the rate limiting “</span><strong><span>activator</span></strong><span>” of CDKs.</span></p><p><span>G1 and G1/S CDKs are also negatively regulated by </span><strong><span>C</span></strong><span>D</span><strong><span>K</span></strong><span> </span><strong><span>I</span></strong><span>nhibitor proteins (CKI). They come in two families :</span></p><ul><li><span>the </span><strong><span>p16</span></strong><span> (INK4) type CKIs which inhibit </span><strong><span>CDK4 and CDK6</span></strong><span> </span></li><li><span>the </span><strong><span>p21 and p27</span></strong><span> type CKIs which inhibit </span><strong><span>CDK2</span></strong><span>.</span></li></ul><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110133427560.png" alt="image-20220110133427560" style="zoom:67%;" /></p><p><strong><span>Cyclin degradation</span></strong><span> is mediated by the 26S proteasome following </span><strong><span>ubiquitylation</span></strong><span> by an E3 ubiquitin ligase.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110133701556.png" alt="image-20220110133701556" style="zoom:50%;" /></p><center style="font-weight:bold">Ubiquitination for Cyclin Proteolysis</center><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110133846375.png" alt="image-20220110133846375" style="zoom:50%;" /></p><center style="font-weight:bold">Cyclin Proteolysis' regulation of CDK activity</center><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110133919516.png" alt="image-20220110133919516" style="zoom: 67%;" /></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110134200352.png" alt="image-20220110134200352" style="zoom:67%;" /></p><p>&nbsp;</p><p><span>Active CDKs </span><strong><span>phosphorylate</span></strong><span> a wide range of substrates at a particular </span><strong><span>target consensus sequence</span></strong><span>. </span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110134422580.png" alt="image-20220110134422580" style="zoom:50%;" /></p><p><span>Phosphorylation and dephosphorylation of CDK substrates </span><strong><span>triggers</span></strong><span> the events associated with </span><strong><span>cell cycle transitions</span></strong><span>. </span>
+<span>At the </span><strong><span>G2/M</span></strong><span> transition, phosphorylation of substrates by CDK1 (cdc2) leads to the reorganization of the cell to form a </span><strong><span>mitotic spindle</span></strong><span>. At the </span><strong><span>M/G1</span></strong><span> transition, dephosphorylation of those same substrates leads to the return of the cell to an </span><strong><span>interphase state</span></strong><span>.</span>
+<span>Other CDK substrates include </span><strong><span>nuclear lamins</span></strong><span> (disassembly of the nuclear envelope), </span><strong><span>motor proteins</span></strong><span> (spindle organization), </span><strong><span>histones</span></strong><span> (chromatin condensation) and </span><strong><span>nucleolin</span></strong><span> (cessation of rRNA synthesis).</span></p><h3 id='27-cell-cycle-checkpoints'><span>27. Cell cycle checkpoints</span></h3><p><span>Cell cycle checkpoints ensure that passage through the cell cycle is carried out in an </span><strong><span>orderly</span></strong><span> and </span><strong><span>timely</span></strong><span> fashion.</span></p><p><img src="https://erwinmaxwell.github.io/sator/mcb/image-20220110140612027.png" referrerpolicy="no-referrer" alt="image-20220110140612027"></p><p><span>Checkpoint pathways consist of sensors, signalling pathways and effectors that act to stop cell cycle progression.</span></p><p><span>Loss of checkpoints is a key step in the development of </span><strong><span>cancer</span></strong><span>.</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
